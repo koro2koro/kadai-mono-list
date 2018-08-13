@@ -1,0 +1,6 @@
+INSERT INTO users (name, email, password, create_at, update_at) VALUES ('test1', 'test1@test.com', '$2a$10$GkZ45yr/YrP0H7.P7aO58eAwmTmfIUIYAEOp/lTVBBU3A0aM.CCkq', now(), now());
+INSERT INTO users (name, email, password, create_at, update_at) VALUES ('test2', 'test2@test.com', '$2a$10$GkZ45yr/YrP0H7.P7aO58ebs7z7jq0tXsO94UMJMRcckvBVOfqTfS', now(), now());
+INSERT INTO users (name, email, password, create_at, update_at) VALUES ('test3', 'test3@test.com', '$2a$10$GkZ45yr/YrP0H7.P7aO58eC1vMOuUBmoy.mgCsZ1SKVj9cOWBitS2', now(), now());
+INSERT INTO users (name, email, password, create_at, update_at) VALUES ('test4', 'test4@test.com', '$2a$10$GkZ45yr/YrP0H7.P7aO58eq4x0mzEpuokJ2mTmqgBOLxarlSeXHYG', now(), now());
+INSERT INTO users (name, email, password, create_at, update_at) VALUES ('test5', 'test5@test.com', '$2a$10$GkZ45yr/YrP0H7.P7aO58esk7Dxpa.BfgnTgGL7enwcYaycPjsjq6', now(), now());
+INSERT INTO users (name, email, password, create_at, update_at) VALUES ('test6', 'test6@test.com', '$2a$10$GkZ45yr/YrP0H7.P7aO58e5gDI2JKASzkIAKHCS6v6y55WZdU947K', now(), now());
