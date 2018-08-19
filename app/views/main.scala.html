@@ -1,9 +1,14 @@
-@(title: String, currentUserOpt: Option[User])(content: Html)(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
+@(
+title: String,
+currentUserOpt: Option[User]
+)(content: Html)(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
 
 @import helper._
 @javascriptRouter("jsRoutes")(
 routes.javascript.ItemUserController.want,
-routes.javascript.ItemUserController.doNotWant
+routes.javascript.ItemUserController.doNotWant,
+routes.javascript.ItemUserController.have,
+routes.javascript.ItemUserController.doNotHave
 )
 
 <!DOCTYPE html>

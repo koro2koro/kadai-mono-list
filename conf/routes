@@ -7,10 +7,10 @@ POST    /login                      controllers.AuthController.login
 GET     /login                      controllers.AuthController.logout
 GET     /items/index                controllers.ItemsController.index(keyword: Option[String])
 GET     /items/:id                  controllers.ItemsController.show(id: Long)
-
 POST    /items/want                 controllers.ItemUserController.want
 POST    /items/dontWant             controllers.ItemUserController.doNotWant
-
+POST    /items/have                 controllers.ItemUserController.have
+POST    /items/dontHave             controllers.ItemUserController.doNotHave
 GET     /users/:id                  controllers.UsersController.show(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path

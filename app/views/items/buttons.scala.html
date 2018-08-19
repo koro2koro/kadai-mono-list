@@ -1,4 +1,7 @@
-@(index: Int, currentUser: User, item: Item)(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
+@(
+index: Int,
+currentUser: User,
+item: Item)(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
 
 <div class="buttons text-center">
     @if(item.wantUsers.exists(_.id == currentUser.id)) {
@@ -10,6 +13,17 @@
     <buttion id="want@index" class="btn btn-primary">Want It</buttion>
     <script type="text/javascript" charset="utf-8">
            $('#want@index').on('click', function(e) { want($(this), '@{item.code}'); });
+       </script>
+    }
+    @if(item.haveUsers.exists(_.id == currentUser.id)) {
+    <buttion id="have@index" class="btn btn-success">Have</buttion>
+    <script type="text/javascript" charset="utf-8">
+           $('#have@index').on('click', function(e) { doNotHave($(this), '@{item.code}'); });
+       </script>
+    } else {
+    <buttion id="have@index" class="btn btn-primary">Have It</buttion>
+    <script type="text/javascript" charset="utf-8">
+           $('#have@index').on('click', function(e) { have($(this), '@{item.code}'); });
        </script>
     }
 </div>

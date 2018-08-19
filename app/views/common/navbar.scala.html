@@ -1,5 +1,5 @@
 @import b3.vertical.fieldConstructor
-@* 現在のログインユーザ(currentUserOpt)を渡せるようにする *@
+
 @(currentUserOpt: Option[User])(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
 
 <header>
@@ -16,7 +16,6 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    @* ログインしたときに利用できるメニューを描画する *@
                     @if(currentUserOpt.isDefined) {
                     <li>
                         <a href="@routes.ItemsController.index(None)">
@@ -49,7 +48,6 @@
                     </li>
                     } else {
                     <li><a href="@routes.SignUpController.index()">@Messages("Register")</a></li>
-                    @* リンクを更新 *@
                     <li><a href="@routes.AuthController.index()">@Messages("LogIn")</a></li>
                     }
                 </ul>

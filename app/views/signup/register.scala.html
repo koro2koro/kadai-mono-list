@@ -1,9 +1,9 @@
 @import b3.vertical.fieldConstructor
 
-@* 現在のログインユーザ(currentUserOpt)を渡せるようにする *@
-@(currentUserOpt: Option[User], signUpForm: Form[SignUp])(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
+@(
+currentUserOpt: Option[User],
+signUpForm: Form[SignUp])(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
 
-@* 共通レイアウト用テンプレートに渡す *@
 @main(Messages("SignUp"), currentUserOpt) {
 
 <div class="row">
@@ -12,16 +12,16 @@
             <div class="panel-heading">@Messages("MemberRegister")</div>
             <div class="panel-body">
                 @signUpForm.globalError.map { error =>
-                <div class="alert alert-warning" role="alert">
-                    @error.message
-                </div>
+                    <div class="alert alert-warning" role="alert">
+                        @error.message
+                    </div>
                 }
                 @b3.formCSRF(routes.SignUpController.register()) {
-                @b3.text(signUpForm("name"), '_label -> "Name", 'placeholder -> "Name")
-                @b3.email(signUpForm("email"), '_label -> "Email", 'placeholder -> "example@mail.com")
-                @b3.password(signUpForm("password"), '_label -> "Password", 'placeholder -> "Password")
-                @b3.password(signUpForm("confirm"), '_label -> "Confirm", 'placeholder -> "Confirm")
-                @b3.submit('class -> "btn btn-primary btn-block") { @Messages("SignUp") }
+                    @b3.text(signUpForm("name"), '_label -> "Name", 'placeholder -> "Name")
+                    @b3.email(signUpForm("email"), '_label -> "Email", 'placeholder -> "example@mail.com")
+                    @b3.password(signUpForm("password"), '_label -> "Password", 'placeholder -> "Password")
+                    @b3.password(signUpForm("confirm"), '_label -> "Confirm", 'placeholder -> "Confirm")
+                    @b3.submit('class -> "btn btn-primary btn-block") { @Messages("SignUp") }
                 }
             </div>
         </div>

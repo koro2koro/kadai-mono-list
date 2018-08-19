@@ -19,7 +19,6 @@ items: Seq[Item])(implicit messagesProvider: MessagesProvider, flash: Flash, req
                             <p class="item-title"><a href="@item.url">@item.name</a></p>
                         }
                         <div class="buttons text-center">
-                            @* ログインしているときだけボタンを描画する *@
                             @if(currentUserOpt.isDefined) {
                                 @views.html.items.buttons(index, currentUserOpt.get, item)
                             }

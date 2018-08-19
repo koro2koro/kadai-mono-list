@@ -60,4 +60,37 @@ class ItemUserController @Inject()(
       )
   }
 
+  def have: Action[AnyContent] = AsyncStack { implicit request =>
+    itemCodeForm.bindFromRequest().fold(
+      { formWithError =>
+        Future.successful(BadRequest(formWithError.errors.flatMap(_.messages).mkString(", ")))
+      }, { itemCode =>
+        itemService.getItemAndCreateByCode(itemCode).map { result =>
+          if (itemUserService.have(loggedIn.id.get, result.id.get))
+            Ok
+          else
+            InternalServerError(Messages("InternalError"))
+        }
+      }
+    )
+  }
+
+  def doNotHave: Action[AnyContent] = AsyncStack { implicit request =>
+    itemCodeForm.bindFromRequest().fold(
+      { formWithError =>
+        Future.successful(BadRequest(formWithError.errors.flatMap(_.messages).mkString(", ")))
+      }, { itemCode =>
+        itemService.getItemByCode(itemCode).map { resultOpt =>
+          lazy val errorResponse = InternalServerError(Messages("InternalError"))
+          resultOpt.map { result =>
+            if (itemUserService.doNotHave(loggedIn.id.get, result.id.get))
+              Ok
+            else
+              errorResponse
+          }.getOrElse(errorResponse)
+        }
+      }
+    )
+  }
+
 }

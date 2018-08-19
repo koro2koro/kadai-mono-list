@@ -21,7 +21,6 @@ class UsersController @Inject()(val userService: UserService,
       targetUser <- userService.findById(id)
       items <- itemService.getItemsByUserId(targetUser.get.id.get)
     } yield {
-      println("#####" + items)
       Ok(views.html.users.show(loggedIn, targetUser.get, items))
     }).getOrElse(InternalServerError(Messages("InternalError")))
   }

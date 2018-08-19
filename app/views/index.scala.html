@@ -1,5 +1,6 @@
-@* 現在のログインユーザ(currentUserOpt)を渡せるようにする *@
-@(currentUserOpt: Option[User], items: Seq[Item])(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
+@(
+currentUserOpt: Option[User],
+items: Seq[Item])(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
 
 @main(Messages("Home"), currentUserOpt) {
 
@@ -7,7 +8,6 @@
   <div class="cover-inner">
     <div class="cover-contents">
       <h1>素敵なモノと出会う場所</h1>
-      @* ログインしていないときだけサインアップへのリンクを描画 *@
       @if(currentUserOpt.isEmpty) {
         <a href="@routes.SignUpController.index()" class="btn btn-success btn-lg">モノリストを始める</a>
       }
@@ -16,7 +16,6 @@
 </div>
 
 <div class="container">
-  @* 商品一覧を描画する *@
   @views.html.items.items(currentUserOpt, items)
 </div>
 
