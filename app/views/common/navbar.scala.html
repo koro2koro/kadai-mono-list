@@ -19,12 +19,11 @@
                     @* ログインしたときに利用できるメニューを描画する *@
                     @if(currentUserOpt.isDefined) {
                     <li>
-                        <a href="#">
+                        <a href="@routes.ItemsController.index(None)">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             @Messages("AddItem")
                         </a>
                     </li>
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                <span class="gravatar">
@@ -35,15 +34,14 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">@Messages("MyPage")</a>
+                                <a href="@routes.UsersController.show(currentUserOpt.get.id.get)">@Messages("MyPage")</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                @* *@
                                 @b3.formCSRF(routes.AuthController.logout(), 'name -> "logout", 'style -> "display: none") {
-                                @b3.submit() {
-                                @Messages("LogOut")
-                                }
+                                    @b3.submit() {
+                                        @Messages("LogOut")
+                                    }
                                 }
                                 <a href="#" onclick="document.logout.submit();">@Messages("LogOut")</a>
                             </li>

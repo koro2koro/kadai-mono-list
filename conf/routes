@@ -1,12 +1,17 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
-
 GET     /signup                     controllers.SignUpController.index
 POST    /signup                     controllers.SignUpController.register
-
 GET     /login                      controllers.AuthController.index
 POST    /login                      controllers.AuthController.login
 GET     /login                      controllers.AuthController.logout
+GET     /items/index                controllers.ItemsController.index(keyword: Option[String])
+GET     /items/:id                  controllers.ItemsController.show(id: Long)
+
+POST    /items/want                 controllers.ItemUserController.want
+POST    /items/dontWant             controllers.ItemUserController.doNotWant
+
+GET     /users/:id                  controllers.UsersController.show(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
