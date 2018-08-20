@@ -1,11 +1,12 @@
 @(
 currentUserOpt: Option[User],
-items: Seq[Item])(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
+items: Seq[(Item, Option[Int])],
+reload: Boolean = false)(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
 
 @if(items.nonEmpty) {
 <div class="row">
     @for(index <- items.indices) {
-        @defining(items(index)){ item =>
+        @defining(items(index)){ case (item, itemCount) =>
         <div class="item">
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="panel panel-default">
@@ -20,9 +21,14 @@ items: Seq[Item])(implicit messagesProvider: MessagesProvider, flash: Flash, req
                         }
                         <div class="buttons text-center">
                             @if(currentUserOpt.isDefined) {
-                                @views.html.items.buttons(index, currentUserOpt.get, item)
+                                @views.html.items.buttons(index, currentUserOpt.get, item, reload)
                             }
                         </div>
+                        @if(itemCount.isDefined) {
+                        <div class="panel-footer">
+                            <p class="text-center">@{index + 1}位: @itemCount</p>
+                        </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,18 +1,19 @@
 @(
 index: Int,
 currentUser: User,
-item: Item)(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
+item: Item,
+reload: Boolean = false)(implicit messagesProvider: MessagesProvider, flash: Flash, request: RequestHeader)
 
 <div class="buttons text-center">
     @if(item.wantUsers.exists(_.id == currentUser.id)) {
     <buttion id="want@index" class="btn btn-success">Want</buttion>
     <script type="text/javascript" charset="utf-8">
-           $('#want@index').on('click', function(e) { doNotWant($(this), '@{item.code}'); });
+           $('#want@index').on('click', function(e) { doNotWant($(this), '@{item.code}', @reload); });
        </script>
     } else {
     <buttion id="want@index" class="btn btn-primary">Want It</buttion>
     <script type="text/javascript" charset="utf-8">
-           $('#want@index').on('click', function(e) { want($(this), '@{item.code}'); });
+           $('#want@index').on('click', function(e) { want($(this), '@{item.code}', @reload); });
        </script>
     }
     @if(item.haveUsers.exists(_.id == currentUser.id)) {

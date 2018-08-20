@@ -16,7 +16,7 @@ items: Seq[Item])(implicit messagesProvider: MessagesProvider, flash: Flash, req
 </div>
 
 <div class="container">
-  @views.html.items.items(currentUserOpt, items)
+  @views.html.items.items(currentUserOpt, items.map((_, None)))
 </div>
 
 }

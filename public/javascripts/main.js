@@ -11,7 +11,10 @@ function want(sender, itemCode) {
            $(sender).addClass("btn-success");
            $(sender).text("Want");
            $(sender).off('click');
-           $(sender).on('click', function(e){ doNotWant($(sender), itemCode); });
+           $(sender).on('click', function(e){ doNotWant($(sender), itemCode, reloadFlg); });
+           if (reloadFlg) {
+            location.reload();
+           }
        },
        error: function (xhr) {
            alert("Error!: " + xhr.responseText)
@@ -32,7 +35,10 @@ function doNotWant(sender, itemCode) {
            $(sender).addClass("btn-primary");
            $(sender).text("Want It");
            $(sender).off('click');
-           $(sender).on('click', function(e){ want($(sender), itemCode); });
+           $(sender).on('click', function(e){ want($(sender), itemCode, reloadFlg); });
+           if (reloadFlg) {
+            location.reload();
+           }
        },
        error: function (xhr) {
            alert("Error!: " + xhr.responseText)
