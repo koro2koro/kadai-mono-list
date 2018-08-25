@@ -24,12 +24,12 @@ reload: Boolean = false)(implicit messagesProvider: MessagesProvider, flash: Fla
                                 @views.html.items.buttons(index, currentUserOpt.get, item, reload)
                             }
                         </div>
-                        @if(itemCount.isDefined) {
-                        <div class="panel-footer">
-                            <p class="text-center">@{index + 1}位: @itemCount</p>
-                        </div>
-                        }
                     </div>
+                    @if(itemCount.isDefined) {
+                    <div class="panel-footer">
+                        <p class="text-center">@{index + 1}位: @itemCount</p>
+                    </div>
+                    }
                 </div>
             </div>
         </div>

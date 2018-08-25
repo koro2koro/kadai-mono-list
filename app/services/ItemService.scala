@@ -22,4 +22,6 @@ trait ItemService {
 
   def getItemsByRanking(`type`: WantHaveType.Value)(implicit dbSession: DBSession = AutoSession): Try[Seq[(Item, Int)]]
 
+
+
 }
